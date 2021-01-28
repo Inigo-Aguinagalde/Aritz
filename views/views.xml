@@ -1,19 +1,220 @@
 <odoo>
   <data>
+
+
+  
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="plaiaundi.list">
-      <field name="name">plaiaundi list</field>
-      <field name="model">plaiaundi.plaiaundi</field>
+
+    <record model="ir.ui.view" id="asignaturas.asignatura_tree">
+      <field name="name">asignaturas.asignatura.tree</field>
+      <field name="model">asignaturas.asignatura</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="profesor"/>
+          <field name="ciclo"/>
         </tree>
       </field>
     </record>
--->
+
+    <record model="ir.ui.view" id="asignaturas.asignatura_form">
+      <field name="name">asignaturas.asignatura.form</field>
+      <field name="model">asignaturas.asignatura</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+          <field name="name"/>
+          <field name="profesor"/>
+          <field name="ciclo">
+            <tree>
+              <field name="name"/>
+              <field name="profesor"/>
+              <field name="ciclo"/>
+            </tree>
+           </field> 
+         </group>
+        </form>
+      </field>
+    </record>
+
+    
+    <record model="ir.ui.view" id="ciclos.ciclo_tree">
+      <field name="name">ciclos.ciclo.tree</field>
+      <field name="model">ciclos.ciclo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="aula"/>
+          <field name="asignatura"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="ciclos.ciclo_form">
+      <field name="name">ciclos.ciclo.form</field>
+      <field name="model">ciclos.ciclo</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+          <field name="name"/>
+          <field name="aula"/>
+          <field name="asignatura">
+            <tree>
+              <field name="name"/>
+              <field name="aula"/>
+              <field name="asignatura"/>
+            </tree>
+           </field> 
+         </group>
+        </form>
+      </field>
+    </record>
+
+    
+    <record model="ir.ui.view" id="alumnos.alumno_tree">
+      <field name="name">alumnos.alumno.tree</field>
+      <field name="model">alumnos.alumno</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="apellido"/>
+          <field name="ordenadores"/>
+          <field name="faltas"/>
+          <field name="nota"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="alumnos.alumno_form">
+      <field name="name">alumnos.alumno.form</field>
+      <field name="model">alumnos.alumno</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+            <field name="nombre"/>
+            <field name="apellido"/>
+            <field name="ordenadores"/>
+            <field name="faltas"/>
+            <field name="nota"/>
+            <tree>
+               <field name="nombre"/>
+               <field name="apellido"/>
+               <field name="ordenadores"/>
+               <field name="faltas"/>
+               <field name="nota"/>
+            </tree>
+           </field> 
+         </group>
+        </form>
+      </field>
+    </record>
+
+    
+    <record model="ir.ui.view" id="ordenadores.ordenador_tree">
+      <field name="name">ordenadores.ordenador.tree</field>
+      <field name="model">ordenadores.ordenador</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="ocupado"/>
+          <field name="alumnos"/>
+          <field name="aula"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="ordenadores.ordenador_form">
+      <field name="name">ordenadores.ordenador.form</field>
+      <field name="model">ordenadores.ordenador</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+          <field name="ocupado"/>
+          <field name="alumnos"/>
+          <field name="aula"/>
+            <tree>
+              <field name="ocupado"/>
+              <field name="alumnos"/>
+              <field name="aula"/>
+            </tree>
+           </field> 
+         </group>
+        </form>
+      </field>
+    </record>
+
+    
+    <record model="ir.ui.view" id="aulas.aula_tree">
+      <field name="name">aulas.aula.tree</field>
+      <field name="model">aulas.aula</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="cilo"/>
+          <field name="ordenadores"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="aulas.aula_form">
+      <field name="name">aulas.aula.form</field>
+      <field name="model">aulas.aula</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+          <field name="nombre"/>
+          <field name="cilo"/>
+          <field name="ordenadores"/>
+            <tree>
+              <field name="nombre"/>
+              <field name="cilo"/>
+              <field name="ordenadores"/>
+            </tree>
+           </field> 
+         </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="aulas.aula_action_window">
+      <field name="name">aulas aula.action.window</field>
+      <field name="res_model">aulas.aula</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="ordenadores.ordenador_action_window">
+      <field name="name">ordenadores ordenador.action.window</field>
+      <field name="res_model">ordenadores.ordenador</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="alumnos.alumno_action_window">
+      <field name="name">alumnos alumno.action.window</field>
+      <field name="res_model">alumnos.alumno</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="ciclos.ciclo_action_window">
+      <field name="name">ciclos ciclo.action.window</field>
+      <field name="res_model">ciclos.ciclo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="asignaturas.asignatura_action_window">
+      <field name="name">asignaturas asignatura.action.window</field>
+      <field name="res_model">asignaturas.asignatura</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+
+    <menuitem name="plaiaundi" id="plaiaundi.menu_root"/>
+
+    <menuitem name="Aulas" id="aulas.aula_menu" parent="plaiaundi.menu_root" action="aulas.aula_action_window"/>
+    <menuitem name="Ordenadores" id="ordenadores.ordenador_menu" parent="plaiaundi.menu_root" action="ordenadores.ordenador_action_window"/>
+    <menuitem name="Alumnos" id="alumnos.alumno_menu" parent="plaiaundi.menu_root" action="alumnos.alumno_action_window"/>
+    <menuitem name="Ciclos" id="ciclos.ciclo_menu" parent="plaiaundi.menu_root" action="ciclos.ciclo_action_window"/>   
+    <menuitem name="Asignaturas" id="asignaturas.asignatura_menu" parent="plaiaundi.menu_root" action="asignaturas.asignatura_action_window"/>
+
+
 
     <!-- actions opening views on models -->
 <!--
